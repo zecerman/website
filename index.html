@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<base href="/site/">-->
+    <base href="/site/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage of Samuel Weiss</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <!--scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+    <script src="js/ascii.js" defer></script>
+    <script src="js/pet.js" defer></script>
+    <script src="js/mnist.js" defer></script>
+</head>
+<body>
+    <section>
+        <header class="banner">
+            <p>Samuel Weiss, Data Scientist</p>
+            <a href="https://github.com/zecerman">
+                <img src="meta/github.png" style="width:50px;height:50px;">
+            </a>
+            <a href="https://www.linkedin.com/in/samuel-weiss-81a45532b/">
+                <img src="meta/in.png" style="width:50px;height:50px;">
+            </a>
+            <a href="ascii_cube.html" style="position:absolute;right:40px;z-index:1001;">
+                <img src="meta/empty.png" style="width:90px;height:80px;">
+            </a>
+        </header>
+        <pre id="ASCII" style="position:fixed;top:0;right:0;padding:0px;z-index: 1000;pointer-events:none;"></pre>
+        <div id="buffer">
+            <!--This element exists so that the banner does not cover the features on page load-->
+        </div>
+    </section>
+    <section class="features">
+        <nav>
+            <ul>
+                <div id="buffer">
+                <!--This element exists so that the banner does not cover the nav bar-->
+                </div>
+                <li class="logo"><a href="index.html">Home</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="asciify.html">Asciify</a></li>
+                <li><a href="test.html">Projects</a></li>
+            </ul>
+        </nav>
+        <div class="flex-container" style="max-width: 324px;">
+            <h1>Digit Guesser</h1>
+            <div id="board-wrapper">
+                <div id="board"><!--filled by mnist.js--></div>
+                <div id="guess-chart"><!--filled by mnist.js--></div>
+            </div>
+            <button onclick="resetBoard()" class="button">Reset</button>
+            <p>The "Hello World" of machine learning, this digit classifier model is hand written CNN architecture made in pytorch and trained on the classic MNIST dataset.</p>
+        </div>
+
+        <div class="flex-container" style="max-width: 324px;">
+            <h1>Stock Forecaster</h1>
+
+            <p>This LSTM model is designed to forecast stock prices based on dynamically available yfinance data. It uses RNN architecture built in pytorch.</p>
+        </div>
+
+        <div class="flex-container" style="width:576px;">
+            <h1>Pet Finder</h1>
+            <div id="image-container">
+                <img id="pet-img" src="meta/in.png" alt="Pet Image" style="width:256px;height:256px;">
+                <img> <!-- used for padding -->
+                <img id="pet-map" src="meta/in.png" alt="Pet Map" style="width:256px;height:256px;">
+                <canvas id="pet-canvas" width="256" height="256" style="display:none;"></canvas>
+            </div>
+            
+            <label class="button">
+                Upload your pet photo here
+                <input type="file" id="pet-upload" accept="image/*" style="display: none;">
+            </label>
+
+            <p>Have you ever taken a picture of your adorable pet, but then later need help finding where they are in the picture? 
+                Look no longer! This image segmentation model can find your cat or dog for you and generate a corresponding heatmap for your reference.
+                This ML model was written from scratch in pytorch, based on UNET architecture, and uses data sourced from the Oxford-IIIT pet dataset.
+            </p>
+            <p id="test"></p>
+        </div>
+
+        <div class="flex-container">
+            <h1>Stock Forecaster</h1>
+
+            <p>This LSTM model is designed to forecast stock prices based on dynamically available yfinance data. It uses RNN architecture built in pytorch</p>
+        </div>
+    </section>
+    <section>large s</section>
+    <footer style="z-index: 1001;">
+        <p>Thank you for visiting, enjoy some candles</p>   
+        <img src="meta/footer.webp" alt="Footer banner" id="footer-banner">
+    </footer>
+</body>
+</html>

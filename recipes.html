@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Drawer</title>
+    <link rel="stylesheet" href="recipes.css"/>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll('.folder-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const folder = tab.parentElement;
+                    document.querySelectorAll('.recipe-folder').forEach(f => {
+                        if (f !== folder) f.classList.remove('open');
+                    });
+                    folder.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div>
+        <a id="home" href="index.html">Home</a>
+        <p>Recipes</p>
+    </div>
+    <main class="drawer">
+<div class="recipe-folder">
+    <div class="folder-tab">Grandma's Apple Pie</div>
+    <div class="recipe-card">
+        <div class="recipe-content">
+            <div class="recipe-text">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>6 apples, peeled and sliced</li>
+                    <li>3/4 cup sugar</li>
+                    <li>2 tbsp flour</li>
+                    <li>1 tsp cinnamon</li>
+                    <li>Pie crust (top and bottom)</li>
+                </ul>
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Preheat oven to 375°F (190°C).</li>
+                    <li>Mix apples with sugar, flour, and cinnamon.</li>
+                    <li>Fill crust, top with second crust, and crimp edges.</li>
+                    <li>Bake for 50 minutes until golden brown.</li>
+                </ol>
+            </div>
+            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+        </div>
+    </div>
+</div>
+<div class="recipe-folder">
+    <div class="folder-tab">Grandma's Apple Pie</div>
+    <div class="recipe-card">
+        <div class="recipe-content">
+            <div class="recipe-text">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>6 apples, peeled and sliced</li>
+                    <li>3/4 cup sugar</li>
+                    <li>2 tbsp flour</li>
+                    <li>1 tsp cinnamon</li>
+                    <li>Pie crust (top and bottom)</li>
+                </ul>
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Preheat oven to 375°F (190°C).</li>
+                    <li>Mix apples with sugar, flour, and cinnamon.</li>
+                    <li>Fill crust, top with second crust, and crimp edges.</li>
+                    <li>Bake for 50 minutes until golden brown.</li>
+                </ol>
+            </div>
+            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+        </div>
+    </div>
+</div>
+<div class="recipe-folder">
+    <div class="folder-tab">Grandma's Apple Pie</div>
+    <div class="recipe-card">
+        <div class="recipe-content">
+            <div class="recipe-text">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>6 apples, peeled and sliced</li>
+                    <li>3/4 cup sugar</li>
+                    <li>2 tbsp flour</li>
+                    <li>1 tsp cinnamon</li>
+                    <li>Pie crust (top and bottom)</li>
+                </ul>
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Preheat oven to 375°F (190°C).</li>
+                    <li>Mix apples with sugar, flour, and cinnamon.</li>
+                    <li>Fill crust, top with second crust, and crimp edges.</li>
+                    <li>Bake for 50 minutes until golden brown.</li>
+                </ol>
+            </div>
+            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+        </div>
+    </div>
+</div>
+<div class="recipe-folder">
+    <div class="folder-tab">Grandma's Apple Pie</div>
+    <div class="recipe-card">
+        <div class="recipe-content">
+            <div class="recipe-text">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>6 apples, peeled and sliced</li>
+                    <li>3/4 cup sugar</li>
+                    <li>2 tbsp flour</li>
+                    <li>1 tsp cinnamon</li>
+                    <li>Pie crust (top and bottom)</li>
+                </ul>
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Preheat oven to 375°F (190°C).</li>
+                    <li>Mix apples with sugar, flour, and cinnamon.</li>
+                    <li>Fill crust, top with second crust, and crimp edges.</li>
+                    <li>Bake for 50 minutes until golden brown.</li>
+                </ol>
+            </div>
+            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+        </div>
+    </div>
+</div>
+<div class="recipe-folder">
+    <div class="folder-tab">Grandma's Apple Pie</div>
+    <div class="recipe-card">
+        <div class="recipe-content">
+            <div class="recipe-text">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>6 apples, peeled and sliced</li>
+                    <li>3/4 cup sugar</li>
+                    <li>2 tbsp flour</li>
+                    <li>1 tsp cinnamon</li>
+                    <li>Pie crust (top and bottom)</li>
+                </ul>
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Preheat oven to 375°F (190°C).</li>
+                    <li>Mix apples with sugar, flour, and cinnamon.</li>
+                    <li>Fill crust, top with second crust, and crimp edges.</li>
+                    <li>Bake for 50 minutes until golden brown.</li>
+                </ol>
+            </div>
+            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+        </div>
+    </div>
+</div>
+        
+    </main>
+</body>
+</html>
