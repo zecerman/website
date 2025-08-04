@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="/">
+    <base href="/base/">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipe Drawer</title>
@@ -19,14 +19,154 @@
             });
         });
     </script>
-
+    <script src="js/ascii.js" defer></script>
 </head>
 <body>
-    <div>
+    <section>
+        <header class="banner">
         <a id="home" href="index.html">Home</a>
-        <p>Recipes</p>
-    </div>
+        <div style="text-align: center; width: 100%;">
+            <p>Coding may be my job, but cooking is my passion.</p>
+            <p>Please enjoy my personal recipe folder :)</p>
+        </div>
+        </header>
+        <pre id="ASCII" style="position:fixed;top:0;right:0;padding:0px;z-index: 1000;pointer-events:none;"></pre>
+        <div id="buffer">
+            <!--This element exists so that the banner does not cover the features on page load-->
+        </div>
+        
+    </section>
+
     <main class="drawer">
+<div class="recipe-folder">
+    <div class="folder-tab">Shrimp Scampi</div>
+    <div class="recipe-card">
+        <div class="recipe-content">
+            <div class="recipe-text">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>1 lb. raw shrimp</li>
+                    <li>1 cup noodles</li>
+                    <li>1/4 cup olive oil</li>
+                    <li>minced garlic & lemon juice</li>
+                    <li>salt, pepper, & sesame seeds</li>
+                </ul>
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Heat water to a boil, add noodles and cook until al-dente (~8 mins).</li>
+                    <li>Set stove temp to hot and add oil to pan and leave until sizzling.</li>
+                    <li>Add garlic, shrimp + lemon juice and cook until red (~4 mins).</li>
+                    <li>Remove pan from heat and stir in noodles + remaining ingredients.</li>
+                </ol>
+            </div>
+            <img class="recipe-image" src="meta/recipe_images/shrimp.png" alt="Shrimp Scampi">
+        </div>
+    </div>
+</div>
+<div class="recipe-folder">
+    <div class="folder-tab">Stovetop Burgers</div>
+    <div class="recipe-card">
+        <div class="recipe-content">
+            <div class="recipe-text">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>1 lb. 80/20 ground beef</li>
+                    <li>white onion, green pepper, minced garlic</li>
+                    <li>2 eggs, 1/8 cup panko bread crumbs</li>
+                    <li>store bought hamburger seasoning and buns</li>
+                    <li>a drizzle of olive oil</li>
+                </ul>
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Preheat oil filled pan to high.</li>
+                    <li>Add onion, garlic, & green pepper to pan, it should be filled.</li>
+                    <li>Mold patties out of beef, egg, & bread crumbs in mixing bowl.</li>
+                    <li>Make room for patties, add them and cover with cooked vegetables.</li>
+                    <li>After cooked halfway (~4 mins) flip patties and cover again.</li>
+                    <li>Remove and serve when cooked to medium rare (~4 mins).</li>
+                </ol>
+            </div>
+            <img class="recipe-image" src="meta/recipe_images/burger.png" alt="Stovetop Burgers">
+        </div>
+    </div>
+</div>
+<div class="recipe-folder">
+    <div class="folder-tab">Protien Pancakes</div>
+    <div class="recipe-card">
+        <div class="recipe-content">
+            <div class="recipe-text">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>2 cups Bisquick</li>
+                    <li>1 cup milk</li>
+                    <li>1/4 cup sugar</li>
+                    <li>2 tsp baking powder</li>
+                    <li>4 eggs</li>
+                    <li>1 tbsp butter (or bacon grease)</li>
+                </ul>
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Add milk to a large mixing bowl, then add all dry ingredients.</li>
+                    <li>While mixing, bring a pan to med-low heat and add butter.</li>
+                    <li>Add 4 pancakes of batter to sizzling pan leaving one spot open, cook for 2 min.</li>
+                    <li>In the empty spot, add 1 egg's whites to pan and flip a pancake on top of it.</li>
+                    <li>Repeat step 4 until all pancakes have been flipped, remove each after 2 min.</li>
+                </ol>
+            </div>
+            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+        </div>
+    </div>
+</div>
+<div class="recipe-folder">
+    <div class="folder-tab">Perfect Smoothie</div>
+    <div class="recipe-card">
+        <div class="recipe-content">
+            <div class="recipe-text">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>6 apples, peeled and sliced</li>
+                    <li>3/4 cup sugar</li>
+                    <li>2 tbsp flour</li>
+                    <li>1 tsp cinnamon</li>
+                    <li>Pie crust (top and bottom)</li>
+                </ul>
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Preheat oven to 375°F (190°C).</li>
+                    <li>Mix apples with sugar, flour, and cinnamon.</li>
+                    <li>Fill crust, top with second crust, and crimp edges.</li>
+                    <li>Bake for 50 minutes until golden brown.</li>
+                </ol>
+            </div>
+            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+        </div>
+    </div>
+</div>
+<div class="recipe-folder">
+    <div class="folder-tab">Grandma's Apple Pie</div>
+    <div class="recipe-card">
+        <div class="recipe-content">
+            <div class="recipe-text">
+                <h2>Ingredients</h2>
+                <ul>
+                    <li>6 apples, peeled and sliced</li>
+                    <li>3/4 cup sugar</li>
+                    <li>2 tbsp flour</li>
+                    <li>1 tsp cinnamon</li>
+                    <li>Pie crust (top and bottom)</li>
+                </ul>
+                <h2>Instructions</h2>
+                <ol>
+                    <li>Preheat oven to 375°F (190°C).</li>
+                    <li>Mix apples with sugar, flour, and cinnamon.</li>
+                    <li>Fill crust, top with second crust, and crimp edges.</li>
+                    <li>Bake for 50 minutes until golden brown.</li>
+                </ol>
+            </div>
+            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+        </div>
+    </div>
+</div>
 <div class="recipe-folder">
     <div class="folder-tab">Grandma's Apple Pie</div>
     <div class="recipe-card">

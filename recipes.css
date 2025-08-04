@@ -1,17 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    background: #333;
+    margin: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header & Navigation */
+.banner {
+    color: #f1f1f1;
+    position: fixed;   /* take it out of the normal flow */
+    top: 0;            /* pin to top edge */
+    left: 0;           /* pin to left edge */
+    width: 100%;       /* span the full viewport width */
+    z-index: 999;     /* keep it above everything else */
+    background-color: #1f1f1f;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: row; /* Ensures horizontal layout */
+    padding: 32px;
+    gap: 20px; /* Adds spacing between items */
+    font-size: 30px;
+}
+#buffer {
+    padding: 110px;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh; /* make it span the full height */
+    width: auto;   /* or set a fixed width like 200px */
+    background-color: #1f1f1f; /* optional for contrast */
+    z-index: 900; /* ensures it sits above other content */
+    padding: 1rem;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* align items to the start (left) */
+    gap: 1rem;
+    list-style: none;
+}
+
+nav ul li a {
+    color: #f1f1f1;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+a:hover {
+    background-color: #333;
+}
+
+
+#ASCII {
+    color: #f1f1f1;
+    white-space: pre;           
+    font-family: monospace;     
+    line-height: 0.9;       
+    /* necessary CSS ^ */  
+}
+
+
 #home {
     display: inline-block;
     padding: 20px;
     text-decoration: none;
-    background-color: #333;
     font-weight: bold;
     font-size: 1.3rem;
     color: #ffca28;
-}
-
-body {
-    background: #333;
-    margin: 0;
-    font-family: Arial, sans-serif;
+    font-size: 30px;
 }
 
 .drawer {
@@ -55,6 +125,7 @@ body {
     border-top-right-radius: 6px;
     cursor: pointer;
     box-shadow: 0px -3px 2px rgba(0,0,0,0.15);
+    text-align: center;
 }
 
 .recipe-card {
@@ -168,6 +239,55 @@ li {
 }
 
 .recipe-folder:nth-child(5) .folder-tab {
+    left: 60%;
+    background-color: #bb8fce; 
+}
+.recipe-folder:nth-child(6) {
+    background-color: #5dade2;
+    z-index: 6;
+}
+
+.recipe-folder:nth-child(6) .folder-tab {
+    left: 0%;
+    background-color: #5dade2; 
+}
+
+.recipe-folder:nth-child(7) {
+    background-color: #f7dc6f; 
+    z-index: 7;
+}
+
+.recipe-folder:nth-child(7) .folder-tab {
+    left: 15%;
+    background-color: #f7dc6f; 
+}
+
+.recipe-folder:nth-child(8) {
+    background-color: #82e0aa; 
+    z-index: 8;
+}
+
+.recipe-folder:nth-child(8) .folder-tab {
+    left: 30%;
+    background-color: #82e0aa; 
+}
+
+.recipe-folder:nth-child(9) {
+    background-color: #f1948a; 
+    z-index: 9;
+}
+
+.recipe-folder:nth-child(9) .folder-tab {
+    left: 45%;
+    background-color: #f1948a;
+}
+
+.recipe-folder:nth-child(10) {
+    background-color: #bb8fce; 
+    z-index: 10;
+}
+
+.recipe-folder:nth-child(10) .folder-tab {
     left: 60%;
     background-color: #bb8fce; 
 }

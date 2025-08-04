@@ -32,6 +32,15 @@ body {
 #buffer {
     padding: 55px;
 }
+#home {
+    display: inline-block;
+    padding: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #ffca28;
+    font-size: 30px;
+}
 
 nav {
     position: fixed;

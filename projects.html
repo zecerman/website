@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--<base href="/website/"> TODO: MAKE SURE YOU UPDATE THE BASE TAG EVERY TIME YOU PUSH TO GITHUB FOR ALL PAGES-->
     <base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Homepage of Samuel Weiss</title>
     <link rel="stylesheet" href="styles.css" type="text/css">
     <!--scripts-->
     <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
     <script src="js/ascii.js" defer></script>
+    <script src="js/pet.js" defer></script>
     <script src="js/mnist.js" defer></script>
 </head>
 <body>
     <section>
         <header class="banner">
-            <nav>
-                <ul>
-                    <li class="logo"><a href="index.html">Home</a></li>
-                </ul>
-            </nav>
+        <a id="home" href="index.html">Home</a>
+        <div style="text-align: center; width: 100%;">
+            <p>TODO section not complete</p>
+        </div>
         </header>
-        <pre id="ASCII" style="position:fixed;top:0;right:0;padding:0px;"></pre>
+        <pre id="ASCII" style="position:fixed;top:0;right:0;padding:0px;z-index: 1000;pointer-events:none;"></pre>
         <div id="buffer">
             <!--This element exists so that the banner does not cover the features on page load-->
         </div>
+        
     </section>
     <section class="features">
-        <p>Feature section</p>
+       
     </section>
-    <section>Large section</section>
-    <footer>
-        <p>Footer</p>           
-    </footer>
+    <section>fill with stuff eg: demonkiller, sql project, team software project, cs5k project, asciify etc...</section>
+
 </body>
 </html>
