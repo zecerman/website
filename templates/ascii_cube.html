@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <base href="/website/">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ascii Cube</title>
-    <link rel="stylesheet" href="styles.css" type="text/css">
-    <!--scripts-->
-    <script src="js/ascii.js" defer></script>
-</head>
-<body>
-    <section>
-        <header class="banner">
-            <a id="home" href="index.html">Home</a>
-            <p style="padding:0px 60px;text-align: center; width: 100%;">.js source code for zbuffer/matrix style ASCII cube</p>
-        </header>
-        <div id="buffer">
-            <!--This element exists so that the banner does not cover the features on page load-->
-        </div>
-    </section>
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Ascii Cube</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" type="text/css">
+<!--scripts-->
+<script src="{{ url_for('static', filename='scripts/ascii.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+<section>
+    <header class="banner">
+        <a id="home" href="{{ url_for('home') }}">Home</a>
+        <p style="padding:0px 60px;text-align: center; width: 100%;">.js source code for zbuffer/matrix style ASCII cube</p>
+    </header>
+    <div id="buffer">
+        <!--This element exists so that the banner does not cover the features on page load-->
+    </div>
+</section>
 <section class="features">
     <div style="display: flex; flex-direction: column; align-items: center;">
         <pre id="ASCII"></pre>
@@ -339,5 +337,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </pre>
 
 
-</body>
-</html>
+{% endblock %}

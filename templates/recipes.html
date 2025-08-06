@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <base href="/website/">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% extends 'base.html' %}
+
+{% block head %}
     <title>Recipe Drawer</title>
-    <link rel="stylesheet" href="recipes.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='recipes.css') }}" type="text/css"/>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll('.folder-tab').forEach(tab => {
@@ -19,12 +16,13 @@
             });
         });
     </script>
-    <script src="js/ascii.js" defer></script>
-</head>
-<body>
+    <script src="{{ url_for('static', filename='scripts/ascii.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
     <section>
         <header class="banner">
-        <a id="home" href="index.html">Home</a>
+        <a id="home" href="{{ url_for('home') }}">Home</a>
         <div style="text-align: center; width: 100%;">
             <p>Coding may be my job, but cooking is my passion.</p>
             <p>Please enjoy my personal recipe folder :)</p>
@@ -34,10 +32,9 @@
         <div id="buffer">
             <!--This element exists so that the banner does not cover the features on page load-->
         </div>
-        
     </section>
 
-    <main class="drawer">
+<main class="drawer">
 <div class="recipe-folder">
     <div class="folder-tab">Shrimp Scampi</div>
     <div class="recipe-card">
@@ -59,7 +56,7 @@
                     <li>Remove pan from heat and stir in noodles + remaining ingredients.</li>
                 </ol>
             </div>
-            <img class="recipe-image" src="meta/recipe_images/shrimp.png" alt="Shrimp Scampi">
+            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/shrimp.png') }}" alt="Shrimp Scampi">
         </div>
     </div>
 </div>
@@ -86,7 +83,7 @@
                     <li>Remove and serve when cooked to medium rare (~4 mins).</li>
                 </ol>
             </div>
-            <img class="recipe-image" src="meta/recipe_images/burger.png" alt="Stovetop Burgers">
+            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/burger.png') }}" alt="Stovetop Burgers">
         </div>
     </div>
 </div>
@@ -113,7 +110,7 @@
                     <li>Repeat step 4 until all pancakes have been flipped, remove each after 2 min.</li>
                 </ol>
             </div>
-            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/burger.png') }}" alt="Apple Pie">
         </div>
     </div>
 </div>
@@ -138,7 +135,7 @@
                     <li>Bake for 50 minutes until golden brown.</li>
                 </ol>
             </div>
-            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/burger.png') }}" alt="Apple Pie">
         </div>
     </div>
 </div>
@@ -163,7 +160,7 @@
                     <li>Bake for 50 minutes until golden brown.</li>
                 </ol>
             </div>
-            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/burger.png') }}" alt="Apple Pie">
         </div>
     </div>
 </div>
@@ -188,7 +185,7 @@
                     <li>Bake for 50 minutes until golden brown.</li>
                 </ol>
             </div>
-            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/burger.png') }}" alt="Apple Pie">
         </div>
     </div>
 </div>
@@ -213,7 +210,7 @@
                     <li>Bake for 50 minutes until golden brown.</li>
                 </ol>
             </div>
-            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/burger.png') }}" alt="Apple Pie">
         </div>
     </div>
 </div>
@@ -238,7 +235,7 @@
                     <li>Bake for 50 minutes until golden brown.</li>
                 </ol>
             </div>
-            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/burger.png') }}" alt="Apple Pie">
         </div>
     </div>
 </div>
@@ -263,7 +260,7 @@
                     <li>Bake for 50 minutes until golden brown.</li>
                 </ol>
             </div>
-            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/burger.png') }}" alt="Apple Pie">
         </div>
     </div>
 </div>
@@ -288,11 +285,9 @@
                     <li>Bake for 50 minutes until golden brown.</li>
                 </ol>
             </div>
-            <img class="recipe-image" src="images/apple-pie.jpg" alt="Apple Pie">
+            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/burger.png') }}" alt="Apple Pie">
         </div>
     </div>
 </div>
-        
-    </main>
-</body>
-</html>
+</main>
+{% endblock %}

@@ -69,7 +69,7 @@ function resetBoard() {
 async function initMNISTModel() {
   // load the model, called once only
   try {
-    mnist_session = await ort.InferenceSession.create('meta/models/mnist_model.onnx');
+    mnist_session = await ort.InferenceSession.create(MNIST_PATH)
     console.log('Mnist model loaded successfully.')
   } catch (error) {
     console.error('Failed to load ONNX model:', error)
@@ -95,7 +95,7 @@ async function checkBoard() {
         const probs = softmax(output.data)
         updateGuess(probs)
     } else {
-        console.error('ONNX mnist_session not initialized yet.')
+        console.error('ONNX mnist_session failed to initialize.')
     }
     
   }

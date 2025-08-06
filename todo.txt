@@ -1,0 +1,22 @@
+    On index:
+On banner:
+- add profile pic on left (possibly drawn with asciify?)
+- add kaggle on right? Contribute to kaggle also
+Add stock forecaster widgit
+
+
+    Recipes:
+add content
+
+
+    Projects:
+fix display, add content:
+- LINK LEETCODE
+- team software proj
+- cs5k
+- demonkiller (also need to write this xd)
+- asciify
+
+
+    Models:
+Cook pet-seg for 15 epochs
