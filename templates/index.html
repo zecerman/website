@@ -14,6 +14,7 @@
     <script src="{{ url_for('static', filename='scripts/ascii.js') }}" defer></script>
     <script src="{{ url_for('static', filename='scripts/pet.js') }}" defer></script>
     <script src="{{ url_for('static', filename='scripts/mnist.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='scripts/forecast.js') }}" defer></script>
 {% endblock %}
 
 {% block body %}
@@ -57,9 +58,13 @@
             <p>The "Hello World" of machine learning, this digit classifier model is hand written CNN architecture made in pytorch and trained on the classic MNIST dataset.</p>
         </div>
 
-        <div class="flex-container" style="max-width: 324px;">
+        <div class="flex-container" style="max-width: 720px;">
             <h1>Stock Forecaster</h1>
-
+            <div>
+                <img id="forecast-plot" src="{{ url_for('static', filename='/img/in.png') }}" alt="Forecast plot" style="width:600px;height:250px;">
+                <pre id="lstm-target"></pre>
+                <button onclick="runForecast()">Run Forecast</button>
+            </div>
             <p>This LSTM model is designed to forecast stock prices based on dynamically available yfinance data. It uses RNN architecture built in pytorch.</p>
         </div>
 

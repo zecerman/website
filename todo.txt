@@ -2,11 +2,12 @@
 On banner:
 - add profile pic on left (possibly drawn with asciify?)
 - add kaggle on right? Contribute to kaggle also
-Add stock forecaster widgit
 
 
     Recipes:
 add content
+- beef stroganof *
+- smoothie [pic]
 
 
     Projects:
@@ -14,9 +15,19 @@ fix display, add content:
 - LINK LEETCODE
 - team software proj
 - cs5k
-- demonkiller (also need to write this xd)
+CODE:
+- demonkiller
 - asciify
 
 
     Models:
-Cook pet-seg for 15 epochs
+
+Work on forecaster widgit:
+- inlcude size toggle for zoom of plot (1 mo - 5 yr)
+- access gpu training in browser for speed increase
+- refactor import statements to be minimal (low prio)
+- add train/test loss progress to the display process
+
+Seg widgit:
+Code parallel processing for seg widgit
+

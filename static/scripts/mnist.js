@@ -1,3 +1,4 @@
+// TODO annotate this page
 // Global parameters
 const SIZE = 28
 let data   = new Float32Array(1 * 1 * 28 * 28)
