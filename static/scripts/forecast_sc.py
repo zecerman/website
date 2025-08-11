@@ -19,74 +19,73 @@ from flask import Response
 device = 'cpu'
 output = ''
 is_complete = False
-TICKER = 'UNASSIGNED'
 # Variables that must be available to app.py to create plot
 y_actuals = None
 y_projection = None
 y_preds_train = None
 y_preds_test = None
 extended_dates = None
-
+pstring = 'Downloading data from yfinance...'
 
 # MAIN BEHAVIOR v
-def run():
-    global y_actuals, y_projection, y_preds_train, y_preds_test, extended_dates # Globals to be referenced by app.py
-    global device, output, is_complete, TICKER # Internal globals
+def run(TICKER):
+    global y_actuals, y_projection, y_preds_train, y_preds_test, extended_dates # Globals to be referenced by forecast.js
+    global device, output, is_complete # Internal globals
     is_complete = False
 
     try: 
         # Download and process data into loaders (record the date_series for later use in plotting)
-        data, date_series, TICKER = data_step()
-        train_loader, test_loader, input_size, target_scaler, test_dataset = init_loaders(data)
-
-        # Init model
-        model = MyLSTM(input_size=input_size).to(device)
-        model.apply(init_weights)
-
-        # Init training params
-        loss_fn = nn.MSELoss()
-        optimizer = torch.optim.RMSprop(model.parameters(), lr=1e-3)
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=5, factor=0.1)
-        NUM_EPOCHS = 20
+        data, date_series = data_step(TICKER)
         
-        # Run training loop
-        start_time = timer()
-        model_results = train_loop(model=model,
-                                train_dataloader=train_loader,
-                                test_dataloader=test_loader,
-                                optimizer=optimizer,
-                                loss_fn=loss_fn,
-                                scheduler=scheduler,
-                                epochs=NUM_EPOCHS)
+        # If no data was downloaded, exit early
+        if data is None: 
+            output = 'No data found, is your ticker mispelled?'
+        else:
+            # Else, proceed to process data into pytorch friendly dataloader objects and init model
+            train_loader, test_loader, input_size, target_scaler, test_dataset = init_loaders(data)
+            model = MyLSTM(input_size=input_size).to(device)
+            model.apply(init_weights)
 
-        end_time = timer()
-        
-        # Model predictions are in logits, recover meaningfull values
-        y_preds_train, y_actuals_train = inverse_scale(model, train_loader, scaler=target_scaler)
-        y_preds_test, y_actuals_test = inverse_scale(model, test_loader, scaler=target_scaler)
-        # Concat train/test vectrors
-        y_preds = np.append(y_preds_train, y_preds_test)
-        y_actuals = np.append(y_actuals_train, y_actuals_test)
+            # Init training params
+            loss_fn = nn.MSELoss()
+            optimizer = torch.optim.RMSprop(model.parameters(), lr=1e-3)
+            scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=5, factor=0.1)
+            NUM_EPOCHS = 30
+            
+            # Run training loop
+            train_loss, test_loss = train_loop(model=model,
+                train_dataloader=train_loader,
+                test_dataloader=test_loader,
+                optimizer=optimizer,
+                loss_fn=loss_fn,
+                scheduler=scheduler,
+                epochs=NUM_EPOCHS)
+            
+            # Model predictions are in logits, recover meaningfull values
+            y_preds_train, y_actuals_train = inverse_scale(model, train_loader, scaler=target_scaler)
+            y_preds_test, y_actuals_test = inverse_scale(model, test_loader, scaler=target_scaler)
+            # Concat train/test vectrors
+            y_preds = np.append(y_preds_train, y_preds_test)
+            y_actuals = np.append(y_actuals_train, y_actuals_test)
 
-        # Perform inference on simulated future data 
-        # (synthetic data assumes ticker's final day performance continues)
-        last_sequence = test_dataset[-1][0].unsqueeze(0).to(device)
-        future_preds = forecast_future(model, last_sequence, n_steps=50, scaler=target_scaler,target_feature_idx=input_size-1)
-        y_projection = np.append(y_preds, future_preds)
+            # Perform inference on simulated future data 
+            # (synthetic data assumes ticker's final day performance continues)
+            last_sequence = test_dataset[-1][0].unsqueeze(0).to(device)
+            future_preds = forecast_future(model, last_sequence, n_steps=50, scaler=target_scaler,target_feature_idx=input_size-1)
+            y_projection = np.append(y_preds, future_preds)
 
-        # Extend date data
-        last_date = date_series.iloc[-1] # Get the last date from the existing series
-        extra_dates = pd.date_range(start=last_date + pd.Timedelta(days=1), periods=len(future_preds), freq='B')  # 'B' = business day
-        extended_dates = pd.concat([date_series, pd.Series(extra_dates)]).reset_index(drop=True)
+            # Extend date data
+            aligned_dates = date_series.iloc[-len(y_preds):].reset_index(drop=True)
+            extra_dates = pd.bdate_range(start=aligned_dates.iloc[-1] + pd.Timedelta(days=1), periods=len(future_preds))
+            extended_dates = pd.concat([aligned_dates, pd.Series(extra_dates)], ignore_index=True)
 
-        # END OF IF BLOCK
-        output = TICKER
+            # END OF IF BLOCK
+            output = 'Model fit to ' + TICKER + ' with Test loss: ' + f'{test_loss:.4f}'
 
     except Exception as e:
         output = f'Error: {str(e)}'
 
-    # Cleanup
-    print('hit') # NOT REACHED
+    # Cleanup (always runs)
     is_complete = True
     return output
 
@@ -98,24 +97,19 @@ def is_done():
 # MAIN BEHAVIOR ^
 
 # Subfunctions of 'run()'
-def data_step(): # TODO change ticker selection logic
-    ticker_ls = [
-        "AAPL",  # Apple Inc.
-        "JPM",   # JPMorgan Chase & Co.
-        "XOM",   # Exxon Mobil Corp.
-        "CVX",   # Chevron Corp.
-        #"WMT",   # Walmart Inc.
-        "PG",    # Procter & Gamble
-        "HD",    # Home Depot Inc.
-        "DIS",   # The Walt Disney Company
-        "NEE"    # NextEra Energy
-    ]
-    TICKER = ticker_ls[r.randint(0,len(ticker_ls)-1)]
-
+def data_step(TICKER): # TODO change ticker selection logic
     current_date = datetime.today()
     START_DATE = (current_date - relativedelta(years=5)).strftime('%Y-%m-%d')
     END_DATE = current_date.strftime('%Y-%m-%d')
-    raw_data = yf.download(TICKER, start=START_DATE, end=END_DATE).reset_index()
+    
+    raw_data = yf.download(TICKER, start=START_DATE, end=END_DATE)
+    # If no data was downloaded, exit early    
+    if raw_data.dropna().empty:
+        return None, None
+
+    # Else, proceed by filtering df for relevant columns
+    raw_data = raw_data.reset_index() # TODO put this back on line 110
+    
     data = pd.DataFrame({
         'Date':raw_data[['Date']].values.ravel(),
         'Low':raw_data[['Low']].values.ravel(),
@@ -123,12 +117,11 @@ def data_step(): # TODO change ticker selection logic
         'Open':raw_data[['Open']].values.ravel(),
         'Close':raw_data[['Close']].values.ravel()
         })
-    data.dropna(inplace=True)
+    data.dropna(inplace=True) #  & relevant rows 
 
     # Save datetime objects for later use as pretty printing
     date_series = data['Date']
-
-    # Datetime objects incompatible w/ training, conv to ordinal integer representation
+    # However, Datetime objects incompatible w/ time-series training, convert to ordinal representation
     data['Date'] = data['Date'].map(lambda x: x.toordinal())
     data['Date'] = (data['Date'] - min(data['Date']))
 
@@ -143,7 +136,7 @@ def data_step(): # TODO change ticker selection logic
     data['Target'] = data['Close'].shift(-1)
     data.drop(columns=['Close'], inplace=True)
     data.dropna(inplace=True)
-    return data, date_series, TICKER
+    return data, date_series
 
 def init_loaders(data):
     # Num backcandles:
@@ -322,7 +315,7 @@ def plot_predictions(actuals, predictions, dates, y_preds_train_len, y_preds_tes
     half_point = len(actuals) // 1.5
     ax.set_xlim(half_point, len(actuals) + 10)
 
-    ax.set_title(f"LSTM Model Stock Price Prediction for {TICKER}")
+    ax.set_title("LSTM Model Stock Price Predictions")
     ax.set_xlabel("Date")
     ax.set_ylabel("Price per Share (USD)")
     ax.legend()
@@ -335,13 +328,7 @@ def plot_predictions(actuals, predictions, dates, y_preds_train_len, y_preds_tes
 
     return Response(buf.getvalue(), mimetype='image/png')
 
-
-
-
-
-
-
-
+##########################################################################################################################################################################################
 
 # Train/test loop functions
 def train_step(model: torch.nn.Module,
@@ -401,11 +388,8 @@ def train_loop(model: torch.nn.Module,
             loss_fn: torch.nn.Module,
             scheduler: torch.optim.lr_scheduler._LRScheduler,
             epochs: int):
-    
-    results = {
-        'train loss' : [],
-        'test loss' : []
-    }
+    global pstring # Necessary for access by forecast.js
+
     # loop through training and testing steps for a number of epochs
     for epoch in range(epochs):
         train_loss = train_step(model=model,
@@ -418,8 +402,7 @@ def train_loop(model: torch.nn.Module,
         
         scheduler.step(test_loss)
 
-        results['train loss'].append(train_loss)
-        results['test loss'].append(test_loss)
-        print(f"Epoch: {epoch+1}, Train loss: {train_loss:.4f}, Test loss: {test_loss:.4f}")
+        pstring = f'Epoch: {epoch+1}/20, Train loss: {train_loss:.4f}, Test loss: {test_loss:.4f}'
+        #print(pstring)
 
-    return results
+    return train_loss, test_loss

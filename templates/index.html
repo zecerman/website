@@ -58,14 +58,32 @@
             <p>The "Hello World" of machine learning, this digit classifier model is hand written CNN architecture made in pytorch and trained on the classic MNIST dataset.</p>
         </div>
 
-        <div class="flex-container" style="max-width: 720px;">
-            <h1>Stock Forecaster</h1>
+        <div class="flex-container" style="max-width: 680px;">
+        <h1>Stock Forecaster</h1>
+        <div>
+            <img id="forecast-plot" src="{{ url_for('static', filename='img/lstm.png') }}" alt="Forecast plot" style="width:600px;height:250px;">
+            <pre id="progress-bar" style="display: none;">progress bar</pre>
+            <pre id="lstm-target">Choose a ticker to see the 10 day price forecast</pre>
+            <p>See the price forecast for the following tickers:</p>
             <div>
-                <img id="forecast-plot" src="{{ url_for('static', filename='/img/in.png') }}" alt="Forecast plot" style="width:600px;height:250px;">
-                <pre id="lstm-target"></pre>
-                <button onclick="runForecast()">Run Forecast</button>
+                <button onclick="runForecast('AMD')" class="button">AMD</button>
+                <button onclick="runForecast('DIS')" class="button">DIS</button>
+                <button onclick="runForecast('PLD')" class="button">PLD</button>
+                <button onclick="runForecast('HD')" class="button">HD</button>
+                <button onclick="runForecast('NEE')" class="button">NEE</button>
             </div>
-            <p>This LSTM model is designed to forecast stock prices based on dynamically available yfinance data. It uses RNN architecture built in pytorch.</p>
+            <p style="opacity: 0%;">space</p>
+            <div style="display:flex;justify-content:center;gap:10px;">
+                <p>Or enter your own ticker:&nbsp;</p>
+                <input id="ticker-input" placeholder="e.g. NVDA" />
+                <button onclick="runForecast(document.getElementById('ticker-input').value || 'AAPL')" class="button">Run Forecast</button>
+            </div>
+            <p style="opacity: 0%;">space</p>
+            <p>(Data beyond "End of Dataset" line represents the ticker's 10 day price forecast)</p>
+            <p>This model is designed to forecast stock prices based on dynamically available yfinance data. It uses LSTM architecture (a form of RNN) built in pytorch.
+                The results of this model are not financial advice, I am not a financial advisor.</p>
+            <p>NOTE: model training is done on CPU due to running in browser, model is 1-2 orders of magnitude faster when running on GPU.</p>
+        </div>
         </div>
 
         <div class="flex-container" style="width:576px;">
@@ -87,12 +105,6 @@
                 This ML model was written from scratch in pytorch, based on UNET architecture, and uses data sourced from the Oxford-IIIT pet dataset.
             </p>
             <p id="test"></p>
-        </div>
-
-        <div class="flex-container">
-            <h1>Stock Forecaster</h1>
-
-            <p>This LSTM model is designed to forecast stock prices based on dynamically available yfinance data. It uses RNN architecture built in pytorch</p>
         </div>
     </section>
     <section></section>

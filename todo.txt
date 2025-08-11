@@ -2,7 +2,7 @@
 On banner:
 - add profile pic on left (possibly drawn with asciify?)
 - add kaggle on right? Contribute to kaggle also
-
+- error 404 on favicon? why
 
     Recipes:
 add content
@@ -23,11 +23,14 @@ CODE:
     Models:
 
 Work on forecaster widgit:
-- inlcude size toggle for zoom of plot (1 mo - 5 yr)
-- access gpu training in browser for speed increase
-- refactor import statements to be minimal (low prio)
 - add train/test loss progress to the display process
+- access gpu training in browser for speed increase
+- inlcude size toggle for zoom of plot (1 mo - 5 yr)
+- refactor import statements to be minimal (low prio)
+
 
 Seg widgit:
 Code parallel processing for seg widgit
+
+
 
