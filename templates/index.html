@@ -61,7 +61,7 @@
         <div>
             <img id="forecast-plot" src="{{ url_for('static', filename='img/lstm.png') }}" alt="Forecast plot" style="width:600px;height:250px;">
             <pre id="progress-bar" style="display: none;">progress bar</pre>
-            <pre id="lstm-target">Choose a ticker to see the 10 day price forecast</pre>
+            <pre id="lstm-target">See a ticker's 10 day price forecast</pre>
             <p>See the price forecast for the following tickers:</p>
             <div>
                 <button onclick="runForecast('AMD')" class="button">AMD</button>
@@ -102,6 +102,7 @@
                 Look no longer! This image segmentation model can find your cat or dog for you and generate a corresponding heatmap for your reference.
                 This ML model was written from scratch in pytorch, based on UNET architecture, and uses data sourced from the Oxford-IIIT pet dataset.
             </p>
+            <p>Warning: site hangs for a few seconds during classification</p>
         </div>
     </section>
     <section></section>

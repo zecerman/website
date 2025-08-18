@@ -31,3 +31,8 @@ Seg widgit:
 
 
 Test
+
+
+TODO TOMORROW:
+- change index home button size to be larger
+- replace loading spinner on seg widgit with useful warning
