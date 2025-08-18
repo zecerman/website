@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 
-{% block head %}
-    <!--<base href="/website/"> TODO: MAKE SURE YOU UPDATE THE BASE TAG EVERY TIME YOU PUSH TO GITHUB FOR ALL PAGES-->
-    <!-- AND FOR BOTH .JS MODEL PATHS-->
-    <title>Homepage of Samuel Weiss</title>
+{% block head %}    
+    <title>🤖 Homepage of Samuel Weiss</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" type="text/css">
-    <!--all .js files that need to reference non-site content must have path constants defined here-->
-    <script>
+    <script> 
+        <!--all .js files that need to reference non-site content must have path constants defined here-->
         const MNIST_PATH = "{{ url_for('static', filename='models/mnist_model.onnx') }}"
         const SEG_PATH = "{{ url_for('static', filename='models/seg_model.onnx') }}"
     </script>
@@ -19,7 +17,7 @@
 
 {% block body %}
     <section>
-        <header class="banner">
+        <header id="banner">
             <p>Samuel Weiss, Data Scientist</p>
             <a href="https://github.com/zecerman">
                 <img src="{{ url_for('static', filename='img/github.png') }}" style="width:50px;height:50px;">
@@ -27,7 +25,7 @@
             <a href="https://www.linkedin.com/in/samuel-weiss-81a45532b/">
                 <img src="{{ url_for('static', filename='img/in.png') }}" style="width:50px;height:50px;">
             </a>
-            <a href="{{ url_for('cube') }}" style="position:absolute;right:40px;z-index:1001;">
+            <a href="{{ url_for('cube') }}" style="position:absolute;top:15px;right:40px;z-index:1001;">
                 <img src="{{ url_for('static', filename='img/empty.png') }}" style="width:90px;height:80px;">
             </a>
         </header>
@@ -45,7 +43,7 @@
             <li class="logo"><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
             <li><a href="{{ url_for('projects') }}">Projects</a></li>
-            <li><a href="{{ url_for('test') }}">Test</a></li>
+            <li><a href="{{ url_for('template') }}">Test</a></li>
             </ul>
         </nav>
         <div class="flex-container" style="max-width: 324px;">
@@ -104,7 +102,6 @@
                 Look no longer! This image segmentation model can find your cat or dog for you and generate a corresponding heatmap for your reference.
                 This ML model was written from scratch in pytorch, based on UNET architecture, and uses data sourced from the Oxford-IIIT pet dataset.
             </p>
-            <p id="test"></p>
         </div>
     </section>
     <section></section>

@@ -5,10 +5,8 @@ On banner:
 - error 404 on favicon? why
 
     Recipes:
-add content
-- beef stroganof *
-- smoothie [pic]
-
+- image needed for beef stroganoff
+- enumerate moms meatloaf and brownie sundae + images
 
     Projects:
 fix display, add content:
@@ -23,14 +21,13 @@ CODE:
     Models:
 
 Work on forecaster widgit:
-- add train/test loss progress to the display process
-- access gpu training in browser for speed increase
+- refactor for GPU access during training
 - inlcude size toggle for zoom of plot (1 mo - 5 yr)
 - refactor import statements to be minimal (low prio)
 
 
 Seg widgit:
-Code parallel processing for seg widgit
+- Needs parallel processing capabilities, currently hangsn
 
 
 

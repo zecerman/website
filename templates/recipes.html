@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-    <title>Recipe Drawer</title>
+    <title>🍔 Recipe Drawer</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='recipes.css') }}" type="text/css"/>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -21,14 +21,17 @@
 
 {% block body %}
     <section>
-        <header class="banner">
+        <header id="banner">
         <a id="home" href="{{ url_for('home') }}">Home</a>
         <div style="text-align: center; width: 100%;">
-            <p>Coding may be my job, but cooking is my passion.</p>
-            <p>Please enjoy my personal recipe folder :)</p>
+            <p>Coding is my job, cooking is my passion. Please enjoy my personal recipe folder.</p>
+            <p>Please enjoy my personal recipe folder!</p>
         </div>
         </header>
         <pre id="ASCII" style="position:fixed;top:0;right:0;padding:0px;z-index: 1000;pointer-events:none;"></pre>
+        <a href="{{ url_for('cube') }}" style="position:absolute;top:20px;right:40px;z-index:999;">
+        <img src="{{ url_for('static', filename='img/empty.png') }}" style="width:90px;height:80px;">
+        </a>
         <div id="buffer">
             <!--This element exists so that the banner does not cover the features on page load-->
         </div>
@@ -88,7 +91,7 @@
     </div>
 </div>
 <div class="recipe-folder">
-    <div class="folder-tab">Protien Pancakes</div>
+    <div class="folder-tab">Protein Pancakes</div>
     <div class="recipe-card">
         <div class="recipe-content">
             <div class="recipe-text">
@@ -110,7 +113,7 @@
                     <li>Repeat step 4 until all pancakes have been flipped, remove each after 2 min.</li>
                 </ol>
             </div>
-            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/burger.png') }}" alt="Apple Pie">
+            <img class="recipe-image" src="{{ url_for('static', filename='recipe_images/pancakes.png') }}" alt="Protein Pancakes">
         </div>
     </div>
 </div>
@@ -164,7 +167,7 @@
     </div>
 </div>
 <div class="recipe-folder">
-    <div class="folder-tab">Grandma's Apple Pie</div>
+    <div class="folder-tab">Mom's Meatloaf</div>
     <div class="recipe-card">
         <div class="recipe-content">
             <div class="recipe-text">
@@ -189,7 +192,7 @@
     </div>
 </div>
 <div class="recipe-folder">
-    <div class="folder-tab">Grandma's Apple Pie</div>
+    <div class="folder-tab">Brownie Sundae</div>
     <div class="recipe-card">
         <div class="recipe-content">
             <div class="recipe-text">
@@ -214,7 +217,7 @@
     </div>
 </div>
 <div class="recipe-folder">
-    <div class="folder-tab">Grandma's Apple Pie</div>
+    <div class="folder-tab">Placeholder</div>
     <div class="recipe-card">
         <div class="recipe-content">
             <div class="recipe-text">
@@ -239,7 +242,7 @@
     </div>
 </div>
 <div class="recipe-folder">
-    <div class="folder-tab">Grandma's Apple Pie</div>
+    <div class="folder-tab">Placeholder</div>
     <div class="recipe-card">
         <div class="recipe-content">
             <div class="recipe-text">
@@ -264,7 +267,7 @@
     </div>
 </div>
 <div class="recipe-folder">
-    <div class="folder-tab">Grandma's Apple Pie</div>
+    <div class="folder-tab">Placeholder</div>
     <div class="recipe-card">
         <div class="recipe-content">
             <div class="recipe-text">

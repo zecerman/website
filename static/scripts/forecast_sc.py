@@ -50,10 +50,10 @@ def run(TICKER):
             loss_fn = nn.MSELoss()
             optimizer = torch.optim.RMSprop(model.parameters(), lr=1e-3)
             scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=5, factor=0.1)
-            NUM_EPOCHS = 30
+            NUM_EPOCHS = 20
             
             # Run training loop
-            train_loss, test_loss = train_loop(model=model,
+            test_loss = train_loop(model=model,
                 train_dataloader=train_loader,
                 test_dataloader=test_loader,
                 optimizer=optimizer,
@@ -405,4 +405,4 @@ def train_loop(model: torch.nn.Module,
         pstring = f'Epoch: {epoch+1}/20, Train loss: {train_loss:.4f}, Test loss: {test_loss:.4f}'
         #print(pstring)
 
-    return train_loss, test_loss
+    return test_loss

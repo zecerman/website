@@ -9,7 +9,7 @@
 
 {% block body %}
 <section>
-    <header class="banner">
+    <header id="banner">
         <a id="home" href="{{ url_for('home') }}">Home</a>
         <p style="padding:0px 60px;text-align: center; width: 100%;">.js source code for zbuffer/matrix style ASCII cube</p>
     </header>
@@ -20,7 +20,6 @@
 <section class="features">
     <div style="display: flex; flex-direction: column; align-items: center;">
         <pre id="ASCII"></pre>
-
         <div class="controls" style="margin-top: 1rem;">
             <input id="cols-input" value="50" style="display:none;">
             <input id="rows-input" value="30" style="display:none;">
@@ -29,7 +28,7 @@
                 <label>
                     cube size <output id="scale-out"></output>
                 </label>
-                <input id="scale-input" type="range" min="1" max="38" value="20"/>
+                <input id="scale-input" type="range" min="1" max="80" value="20"/>
             </div>
         </div>
     </div>

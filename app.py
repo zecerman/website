@@ -66,6 +66,10 @@ def recipes():
 def projects():
     return render_template('projects.html')
 
+@app.route('/template')
+def template():
+    return render_template('template.html')
+
 @app.route('/test')
 def test():
     return render_template('test.html')

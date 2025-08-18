@@ -15,7 +15,7 @@ body {
 }
 
 /* Header & Navigation */
-.banner {
+#banner {
     color: #f1f1f1;
     position: fixed;   /* take it out of the normal flow */
     top: 0;            /* pin to top edge */

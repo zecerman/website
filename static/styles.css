@@ -15,7 +15,7 @@ body {
 }
 
 /* Header & Navigation */
-.banner {
+#banner {
     position: fixed;   /* take it out of the normal flow */
     top: 0;            /* pin to top edge */
     left: 0;           /* pin to left edge */
@@ -25,7 +25,7 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: row; /* Ensures horizontal layout */
-    padding: 32px;
+    padding: 28px;
     gap: 20px; /* Adds spacing between items */
     font-size: 30px;
 }
