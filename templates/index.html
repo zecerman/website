@@ -22,8 +22,11 @@
             <a href="https://github.com/zecerman">
                 <img src="{{ url_for('static', filename='img/github.png') }}" style="width:50px;height:50px;">
             </a>
-            <a href="https://www.linkedin.com/in/samuel-weiss-81a45532b/">
+            <a href="https://linkedin.com/in/samuel-weiss-81a45532b/">
                 <img src="{{ url_for('static', filename='img/in.png') }}" style="width:50px;height:50px;">
+            </a>
+            <a href="https://leetcode.com/u/zecerman">
+                <img src="{{ url_for('static', filename='img/leetcode.png') }}" style="width:50px;height:50px;">
             </a>
             <a href="{{ url_for('cube') }}" style="position:absolute;top:15px;right:40px;z-index:1001;">
                 <img src="{{ url_for('static', filename='img/empty.png') }}" style="width:90px;height:80px;">
@@ -43,18 +46,8 @@
             <li class="logo"><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
             <li><a href="{{ url_for('projects') }}">Projects</a></li>
-            <li><a href="{{ url_for('template') }}">Test</a></li>
             </ul>
         </nav>
-        <div class="flex-container" style="max-width: 324px;">
-            <h1>Digit Guesser</h1>
-            <div id="board-wrapper">
-                <div id="board"><!--filled by mnist.js--></div>
-                <div id="guess-chart"><!--filled by mnist.js--></div>
-            </div>
-            <button onclick="resetBoard()" class="button">Reset</button>
-            <p>The "Hello World" of machine learning, this digit classifier model is hand written CNN architecture made in pytorch and trained on the classic MNIST dataset.</p>
-        </div>
 
         <div class="flex-container" style="max-width: 680px;">
         <h1>Stock Forecaster</h1>
@@ -70,18 +63,26 @@
                 <button onclick="runForecast('HD')" class="button">HD</button>
                 <button onclick="runForecast('NEE')" class="button">NEE</button>
             </div>
-            <p style="opacity: 0%;">space</p>
+            <br>
             <div style="display:flex;justify-content:center;gap:10px;">
                 <p>Or enter your own ticker:&nbsp;</p>
                 <input id="ticker-input" placeholder="e.g. NVDA" />
                 <button onclick="runForecast(document.getElementById('ticker-input').value || 'AAPL')" class="button">Run Forecast</button>
             </div>
-            <p style="opacity: 0%;">space</p>
-            <p>(Data beyond "End of Dataset" line represents the ticker's 10 day price forecast)</p>
-            <p>This model is designed to forecast stock prices based on dynamically available yfinance data. It uses LSTM architecture (a form of RNN) built in pytorch.
-                The results of this model are not financial advice, I am not a financial advisor.</p>
-            <p>NOTE: model training is done on CPU due to running in browser, model is 1-2 orders of magnitude faster when running on GPU.</p>
+            <br>
+            <p>Data beyond the "End of Dataset" line represents the ticker's 10 day price forecast. This model is designed to forecast stock prices based on publically available yfinance data. It uses LSTM architecture built in pytorch.</p>
+            <p><strong>NOTE: model fitting is done on CPU due to running on a VPS with no GPU, the model is 1-2 orders of magnitude faster when running on GPU.</strong></p>
         </div>
+        </div>
+
+        <div class="flex-container" style="max-width: 324px;">
+            <h1>Digit Guesser</h1>
+            <div id="board-wrapper">
+                <div id="board"><!--filled by mnist.js--></div>
+                <div id="guess-chart"><!--filled by mnist.js--></div>
+            </div>
+            <button onclick="resetBoard()" class="button">Reset</button>
+            <p>The "Hello World" of machine learning, this digit classifier model is hand written CNN architecture made in pytorch and trained on the classic MNIST dataset.</p>
         </div>
 
         <div class="flex-container" style="width:576px;">
